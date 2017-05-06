@@ -1,0 +1,41 @@
+<?xml version='1.0'?>
+<!DOCTYPE service_bundle SYSTEM '/usr/share/lib/xml/dtd/service_bundle.dtd.1'>
+<service_bundle type='manifest' name='export'>
+  <service name='custom/mdns-announce' type='service' version='0'>
+    <dependency name='fs-root' grouping='require_all' restart_on='none' type='service'>
+      <service_fmri value='svc:/system/filesystem/root'/>
+    </dependency>
+    <dependency name='network-service' grouping='require_all' restart_on='none' type='service'>
+      <service_fmri value='svc:/network/service'/>
+    </dependency>
+    <dependency name='samba-service' grouping='require_all' restart_on='none' type='service'>
+      <service_fmri value='svc:/pkgsrc/samba'/>
+    </dependency>
+    <instance name='device-info' enabled='true'>
+      <exec_method name='start' type='method' exec='/usr/bin/dns-sd -R smb _device-info._tcp local 445 model=Xserve3,1' timeout_seconds='0'/>
+      <exec_method name='stop' type='method' exec=':kill' timeout_seconds='30'/>
+      <exec_method name='refresh' type='method' exec=':kill -HUP' timeout_seconds='0'/>
+      <property_group name='startd' type='framework'>
+        <propval name='duration' type='astring' value='child'/>
+      </property_group>
+      <template>
+        <common_name>
+          <loctext xml:lang='C'>Device Info Announcement</loctext>
+        </common_name>
+      </template>
+    </instance>
+    <instance name='smb' enabled='true'>
+      <exec_method name='start' type='method' exec='/usr/bin/dns-sd -R smb _smb._tcp local 445' timeout_seconds='0'/>
+      <exec_method name='stop' type='method' exec=':kill' timeout_seconds='30'/>
+      <exec_method name='refresh' type='method' exec=':kill -HUP' timeout_seconds='0'/>
+      <property_group name='startd' type='framework'>
+        <propval name='duration' type='astring' value='child'/>
+      </property_group>
+      <template>
+        <common_name>
+          <loctext xml:lang='C'>SMB Service Announcement</loctext>
+        </common_name>
+      </template>
+    </instance>
+  </service>
+</service_bundle>

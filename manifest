@@ -1,0 +1,8 @@
+name="blmx-smb"
+organization="blmx"
+brand="Instance"
+version="17.1.0"
+description="blmx.de Samba Server"
+homepage="https://github.com/bluemaex/mi-blmx-smb"
+users="root admin"
+base="16a4cc82-e97a-4536-b1e8-683b1e9d9e55"
