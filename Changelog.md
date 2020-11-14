@@ -2,6 +2,10 @@
 
 ## 17.1.0
 
+* use latest qutic-base image
+
+## 17.1.0
+
 * Initial Release
 
 ### New
