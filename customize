@@ -10,7 +10,7 @@ set -o errexit
 
 # Configuring image specific packages
 echo "* Configuring image specific packages.";
-
+mkdir -p /var/log/samba/
 svccfg import /opt/local/lib/svc/manifest/mdns-announce.xml
 
 # Clean up
