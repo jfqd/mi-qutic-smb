@@ -5,20 +5,13 @@
 # Custom versions and variables
 PATH=/opt/local/gnu/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin
 
-# Munin plugins
-MUNIN_PLUGINS="
-	samba
-	samba_users
-"
-
 # Exit if any commands fail
 set -o errexit
 
 # Configuring image specific packages
 echo "* Configuring image specific packages.";
 
-echo "* Cleanup home/admin because of delegate dataset usage"
-rm -rf /home/admin/.[^.]*
+svccfg import /opt/local/lib/svc/manifest/mdns-announce.xml
 
 # Clean up
 echo "* Cleaning up."
