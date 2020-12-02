@@ -99,7 +99,7 @@ chown jerry:staff /data/joe
 On a Mac add the timemachine destination like:
 
 ```
-sudo  tmutil setdestination 'smb://joe:smbpasswd@smb.example.com/timemachine'
+sudo tmutil setdestination 'smb://joe:smbpasswd@smb.example.com/timemachine'
 ```
 
 ## services
