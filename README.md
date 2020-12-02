@@ -12,6 +12,7 @@ Create datasets for timemachine and home:
 
 ```
 zfs create zones/datasets
+zfs set compression=lz4 zones/datasets
 zfs create zones/datasets/timemachine
 zfs create zones/datasets/home
 ```
